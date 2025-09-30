@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://devuser:devpass@localhost:27017/recipes_db?authSource=admin
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false

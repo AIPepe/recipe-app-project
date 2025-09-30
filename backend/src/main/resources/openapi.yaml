@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: Recipe API
+  version: 1.0.0
+paths:
+  /recipes:
+    get:
+      summary: List recipes
+      operationId: recipesGet
+      tags:
+        - recipes
+      responses:
+        '200':
+          description: List of recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+    post:
+      summary: Create a new recipe
+      operationId: recipesPost
+      tags:
+        - recipes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeCreate'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+  /recipes/{id}:
+    get:
+      summary: Get recipe by ID
+      operationId: recipesIdGet
+      tags:
+        - recipes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A recipe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '404':
+          description: Not found
+    put:
+      summary: Update a recipe
+      operationId: recipesIdPut
+      tags:
+        - recipes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeCreate'
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '404':
+          description: Not found
+    delete:
+      summary: Delete a recipe
+      operationId: recipesIdDelete
+      tags:
+        - recipes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Not found
+components:
+  schemas:
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: string
+        steps:
+          type: array
+          items:
+            type: string
+        categories:
+          type: array
+          items:
+            type: string
+    RecipeCreate:
+      type: object
+      required:
+        - title
+        - ingredients
+        - steps
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: string
+        steps:
+          type: array
+          items:
+            type: string
+        categories:
+          type: array
+          items:
+            type: string
+

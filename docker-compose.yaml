@@ -1,0 +1,55 @@
+# Version der Docker Compose Syntax
+version: '3.8'
+
+# Hier definieren wir unsere einzelnen "Instrumente" (Container), die wir "Services" nennen.
+services:
+  # 1. Der Datenbank-Service
+  mongo:
+    image: mongo # Verwendet das offizielle Mongo-Image
+    container_name: mongo_db
+    networks:
+      - recipe-net # Verbindet ihn mit unserem Netzwerk
+    ports:
+      - "27017:27017" # Leitet den DB-Port weiter (für Debugging)
+    volumes:
+      - mongo-data:/data/db # Sorgt dafür, dass unsere Daten gespeichert bleiben, auch wenn wir den Container neu starten
+
+  # 2. Der Backend-Service
+  backend:
+    image: recipe-backend # Verwendet das Image, das wir gebaut haben
+    container_name: recipe_app_backend
+    build: ./backend # Sagt Docker Compose, wo es das Dockerfile findet, falls wir neu bauen müssen
+    networks:
+      - recipe-net
+    ports:
+      - "8080:8080"
+    environment:
+      # Wir sagen dem Backend, wie es den Datenbank-Container im Netzwerk findet
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo_db:27017/recipesdb
+    depends_on:
+      - mongo # Startet erst, nachdem der 'mongo'-Service gestartet ist
+
+  # 3. Der Frontend-Service
+  frontend:
+    image: recipe-frontend # Verwendet das Frontend-Image, das wir gebaut haben
+    container_name: recipe_app_frontend
+    build: ./frontend
+    networks:
+      - recipe-net
+    ports:
+      # WICHTIG: Wir leiten den Port 80 des Containers auf Port 80 unseres Computers weiter.
+      # Das bedeutet, du kannst die App jetzt einfach über http://localhost aufrufen!
+      - "80:80"
+    depends_on:
+      - backend # Startet erst, nachdem das Backend gestartet ist
+
+# Hier definieren wir das Netzwerk, das alle Services verwenden
+networks:
+  recipe-net:
+    driver: bridge
+
+# Hier definieren wir das "Volume", um die Datenbankdaten zu speichern
+volumes:
+  mongo-data:
+    driver: local
+    
