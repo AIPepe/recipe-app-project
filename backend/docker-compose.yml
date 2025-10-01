@@ -1,4 +1,3 @@
-# docker-compose.yml (at project root or inside backend/)
 services:
   mongodb:
     image: mongo:7
