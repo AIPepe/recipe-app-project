@@ -128,7 +128,7 @@ function App() {
         )}
       </main>
       <footer className="app-footer">
-        <p>&copy; 2025 - Ein Projekt von [Dein Name]</p>
+        <p>&copy; 2025 - Ein Projekt von [Denis Nickel]</p>
       </footer>
     </div>
   );

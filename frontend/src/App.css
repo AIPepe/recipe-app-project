@@ -1,10 +1,10 @@
 /* === Globale Styles & Variablen === */
 :root {
-  --primary-color: #3b82f6; /* Blau */
+  --primary-color: #3b82f6;
   --primary-color-hover: #2563eb;
-  --secondary-color: #6b7280; /* Grau */
+  --secondary-color: #6b7280;
   --secondary-color-hover: #4b5563;
-  --background-color: #f9fafb; /* Sehr helles Grau */
+  --background-color: #f9fafb;
   --card-background-color: #ffffff;
   --text-color: #1f2937;
   --subtle-text-color: #6b7280;
@@ -27,9 +27,9 @@ body {
 
 /* === App Layout === */
 .app-container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
 }
 
 .app-header {
@@ -172,10 +172,10 @@ body {
   box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
 }
 
-/* === Rezept-Karte === */
+/* === Rezept-Karte (Grid Layout) === */
 .recipe-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 1.5rem;
 }
 
@@ -186,6 +186,8 @@ body {
   box-shadow: var(--box-shadow);
   padding: 1.5rem 2rem;
   transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
 }
 
 .recipe-card:hover {
@@ -205,6 +207,7 @@ body {
 
 .recipe-details {
   margin-top: 1.5rem;
+  flex-grow: 1;
 }
 
 .recipe-details h3 {
@@ -283,6 +286,7 @@ body {
   text-align: center;
   color: var(--subtle-text-color);
   padding: 2rem;
+  grid-column: 1 / -1;
 }
 
 /* === Footer === */
