@@ -174,9 +174,11 @@ body {
 
 /* === Rezept-Karte (Grid Layout) === */
 .recipe-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .recipe-card {
