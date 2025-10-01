@@ -188,8 +188,6 @@ body {
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  flex: 0 1 360px;
-  max-width: 520px;
 }
 
 .recipe-card:hover {
