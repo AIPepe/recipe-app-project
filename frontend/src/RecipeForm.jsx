@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-
 function RecipeForm({ onSave, recipeToEdit, onCancel }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -11,10 +10,10 @@ function RecipeForm({ onSave, recipeToEdit, onCancel }) {
   useEffect(() => {
     if (recipeToEdit) {
       setTitle(recipeToEdit.title);
-      setDescription(recipeToEdit.description);
+      setDescription(recipeToEdit.description || '');
       setIngredients(recipeToEdit.ingredients.join(', '));
       setSteps(recipeToEdit.steps.join(', '));
-      setCategories(recipeToEdit.categories.join(', '));
+      setCategories(recipeToEdit.categories ? recipeToEdit.categories.join(', ') : '');
     } else {
       setTitle('');
       setDescription('');
@@ -22,23 +21,30 @@ function RecipeForm({ onSave, recipeToEdit, onCancel }) {
       setSteps('');
       setCategories('');
     }
-  }, [recipeToEdit]); 
+  }, [recipeToEdit]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const recipeData = {
       title,
       description,
-      ingredients: ingredients.split(',').map(item => item.trim()),
-      steps: steps.split(',').map(item => item.trim()),
-      categories: categories.split(',').map(item => item.trim()),
+      ingredients: ingredients.split(',').map(item => item.trim()).filter(item => item),
+      steps: steps.split(',').map(item => item.trim()).filter(item => item),
+      categories: categories.split(',').map(item => item.trim()).filter(item => item),
     };
-    onSave(recipeData);
+    onSave(recipeData); // Die allgemeine Speicher-Funktion aus App.jsx aufrufen
+
+    if (!recipeToEdit) {
+        setTitle('');
+        setDescription('');
+        setIngredients('');
+        setSteps('');
+        setCategories('');
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className={`recipe-form ${recipeToEdit ? "edit-mode" : ""}`}>
-      {/* 2. Der Titel ändert sich je nach Modus */}
       <h2>{recipeToEdit ? 'Rezept bearbeiten' : 'Neues Rezept hinzufügen'}</h2>
       <input
         type="text"
@@ -70,9 +76,7 @@ function RecipeForm({ onSave, recipeToEdit, onCancel }) {
         onChange={(e) => setCategories(e.target.value)}
       />
       <div className="form-buttons">
-        {/* 3. Der Button-Text ändert sich, und wir haben einen Abbrechen-Button */}
         <button type="submit">{recipeToEdit ? 'Änderungen speichern' : 'Rezept speichern'}</button>
-        {/* Der Abbrechen-Button wird nur im Bearbeiten-Modus angezeigt */}
         {recipeToEdit && (
           <button type="button" onClick={onCancel} className="cancel-button">
             Abbrechen
