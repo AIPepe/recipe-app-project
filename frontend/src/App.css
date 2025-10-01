@@ -177,7 +177,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: center;   /* <- zentriert die Reihe */
+  justify-content: center;
   align-items: flex-start;
 }
 
@@ -190,8 +190,7 @@ body {
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  flex: 1 1 360px;
+  flex: 0 1 360px;
   max-width: 520px;
 }
 
