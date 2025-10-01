@@ -1,303 +1,374 @@
-/* === Globale Styles & Variablen === */
 :root {
-  --primary-color: #3b82f6;
-  --primary-color-hover: #2563eb;
-  --secondary-color: #6b7280;
-  --secondary-color-hover: #4b5563;
-  --background-color: #f9fafb;
-  --card-background-color: #ffffff;
-  --text-color: #1f2937;
-  --subtle-text-color: #6b7280;
-  --border-color: #e5e7eb;
-  --danger-color: #ef4444;
-  --danger-color-hover: #dc2626;
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --border-radius: 0.5rem;
-  --box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    font-family: system-ui,Avenir,Helvetica,Arial,sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    color: #ffffffde;
+    background-color: #242424;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit
+}
+
+a:hover {
+    color: #535bf2
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-family);
-  background-color: var(--background-color);
-  color: var(--text-color);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh
 }
 
-/* === App Layout === */
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1
+}
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: .6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color .25s
+}
+
+button:hover {
+    border-color: #646cff
+}
+
+button:focus,button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color:#213547;
+        background-color: #fff
+    }
+
+    a:hover {
+        color: #747bff
+    }
+
+    button {
+        background-color: #f9f9f9
+    }
+}
+
+:root {
+    --primary-color: #3b82f6;
+    --primary-color-hover: #2563eb;
+    --secondary-color: #6b7280;
+    --secondary-color-hover: #4b5563;
+    --background-color: #f9fafb;
+    --card-background-color: #ffffff;
+    --text-color: #1f2937;
+    --subtle-text-color: #6b7280;
+    --border-color: #e5e7eb;
+    --danger-color: #ef4444;
+    --danger-color-hover: #dc2626;
+    --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --border-radius: .5rem;
+    --box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1)
+}
+
+body {
+      display: block !important;
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
 .app-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto; 
   padding: 2rem 1.5rem;
 }
 
 .app-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem
 }
 
 .app-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: -0.025em;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -.025em
 }
 
 .app-header p {
-  margin-top: 0.5rem;
-  font-size: 1.125rem;
-  color: var(--subtle-text-color);
+    margin-top: .5rem;
+    font-size: 1.125rem;
+    color: var(--subtle-text-color)
 }
 
-/* === Formular === */
 .form-container {
-  background-color: var(--card-background-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  margin-bottom: 3rem;
-  border: 2px solid transparent;
-  transition: border-color 0.3s ease-in-out;
+    background-color: var(--card-background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 3rem;
+    border: 2px solid transparent;
+    transition: border-color .3s ease-in-out
 }
 
 .form-container.edit-mode {
-  border-color: var(--primary-color);
+    border-color: var(--primary-color)
 }
 
 .recipe-form {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+    padding: 2rem;
+
+    flex-direction: column;
+    gap: 1.5rem
 }
 
 .recipe-form h2 {
-  margin: 0;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 600;
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column
 }
 
 .form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  font-size: 0.875rem;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    font-size: .875rem
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.375rem;
-  font-size: 1rem;
-  font-family: inherit;
-  box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
+.form-group input,.form-group textarea {
+    width: 100%;
+    padding: .75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: .375rem;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color .2s,box-shadow .2s
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
+.form-group input:focus,.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px #3b82f633
 }
 
 .form-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    margin-top: .5rem
 }
 
-.button-primary, .button-secondary {
-  flex-grow: 1;
-  padding: 0.75rem;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.button-primary,.button-secondary {
+    flex-grow: 1;
+    padding: .75rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: .375rem;
+    cursor: pointer;
+    transition: background-color .2s
 }
 
 .button-primary {
-  background-color: var(--primary-color);
-  color: white;
+    background-color: var(--primary-color);
+    color: #fff
 }
+
 .button-primary:hover {
-  background-color: var(--primary-color-hover);
+    background-color: var(--primary-color-hover)
 }
 
 .button-secondary {
-  background-color: var(--secondary-color);
-  color: white;
-}
-.button-secondary:hover {
-  background-color: var(--secondary-color-hover);
+    background-color: var(--secondary-color);
+    color: #fff
 }
 
-/* === Rezeptliste Header & Suche === */
+.button-secondary:hover {
+    background-color: var(--secondary-color-hover)
+}
+
 .list-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color)
 }
 
 .list-header h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600
 }
 
 .search-input {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.375rem;
-  font-size: 0.9rem;
-  width: 200px;
-}
-.search-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
+    padding: .5rem .75rem;
+    border: 1px solid var(--border-color);
+    border-radius: .375rem;
+    font-size: .9rem;
+    width: 200px
 }
 
-/* === Rezept-Karte (Grid Layout) === */
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px #3b82f633
+}
 .recipe-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
   justify-content: center;
-  align-items: flex-start;
+  gap: 1.5rem;
 }
 
+
 .recipe-card {
-  position: relative;
-  background-color: var(--card-background-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 1.5rem 2rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
+    position: relative;
+    background-color: var(--card-background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px; 
+
 }
 
 .recipe-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px #0000001a,0 2px 4px -2px #0000001a
 }
 
 .recipe-card h2 {
-  margin: 0 0 0.5rem;
-  color: var(--primary-color);
+    margin: 0 0 .5rem;
+    color: var(--primary-color)
 }
 
 .recipe-description {
-  color: var(--subtle-text-color);
-  margin-bottom: 1.5rem;
+    color: var(--subtle-text-color);
+    margin-bottom: 1.5rem
 }
 
 .recipe-details {
-  margin-top: 1.5rem;
-  flex-grow: 1;
+    margin-top: 1.5rem;
+    flex-grow: 1
 }
 
 .recipe-details h3 {
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em
 }
 
-.recipe-details ul, .recipe-details ol {
-  padding-left: 1.5rem;
-  line-height: 1.6;
+.recipe-details ul,.recipe-details ol {
+    padding-left: 1.5rem;
+    line-height: 1.6
 }
 
 .card-buttons {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 0.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: .5rem
 }
 
-.edit-button, .delete-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  font-size: 1rem;
-  opacity: 0.7;
+.edit-button,.delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .2s;
+    font-size: 1rem;
+    opacity: .7
 }
-.recipe-card:hover .edit-button, .recipe-card:hover .delete-button {
-  opacity: 1;
+
+.recipe-card:hover .edit-button,.recipe-card:hover .delete-button {
+    opacity: 1
 }
 
 .edit-button {
-  background-color: var(--secondary-color);
-  color: white;
+    background-color: var(--secondary-color);
+    color: #fff
 }
+
 .edit-button:hover {
-  background-color: var(--secondary-color-hover);
+    background-color: var(--secondary-color-hover)
 }
 
 .delete-button {
-  background-color: var(--danger-color);
-  color: white;
+    background-color: var(--danger-color);
+    color: #fff
 }
+
 .delete-button:hover {
-  background-color: var(--danger-color-hover);
+    background-color: var(--danger-color-hover)
 }
 
 .recipe-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1rem
 }
 
 .category-tag {
-  background-color: #eef2ff;
-  color: #4338ca;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
+    background-color: #eef2ff;
+    color: #4338ca;
+    padding: .25rem .75rem;
+    border-radius: 9999px;
+    font-size: .75rem;
+    font-weight: 500
 }
 
-.loading-indicator, .no-recipes-found {
-  text-align: center;
-  color: var(--subtle-text-color);
-  padding: 2rem;
-  grid-column: 1 / -1;
+.loading-indicator,.no-recipes-found {
+    text-align: center;
+    color: var(--subtle-text-color);
+    padding: 2rem;
+    grid-column: 1 / -1
 }
 
-/* === Footer === */
 .app-footer {
-  text-align: center;
-  margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-color);
-  color: var(--subtle-text-color);
-  font-size: 0.875rem;
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--subtle-text-color);
+    font-size: .875rem
 }
-
